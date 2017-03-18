@@ -14,9 +14,9 @@
 		"php": ">=5.5.9",
 		"laravel/framework": "5.1.*",
 		"illuminate3/kotoba": "dev-master",
-		"illuminate3/core": "*",
-		"illuminate3/origami": "*",
-		"illuminate3/kantoku": "*",
+		"rakko/core": "*",
+		"rakko/origami": "*",
+		"rakko/kantoku": "*",
 
     "filp/whoops": "^1.0",
     "doctrine/dbal": "^2.5",
