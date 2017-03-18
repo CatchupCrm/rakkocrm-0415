@@ -16,14 +16,14 @@
 --}}
 
 <div class="container-fluid">
-<div class="row">
-<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
 
-{!!
-	Widget::TopNews()
-!!}
+            {{--{!!
+                Widget::TopNews()
+            !!}--}}
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 <!-- news_tab -->

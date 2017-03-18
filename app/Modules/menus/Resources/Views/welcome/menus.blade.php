@@ -1,8 +1,8 @@
-@extends('module_info')
+@extends($theme_back)
 
 {{-- Web site Title --}}
 @section('title')
-{{ Config::get('core.title') }} :: @parent
+    {{ Config::get('core.title') }} :: @parent
 @stop
 
 @section('styles')
@@ -18,21 +18,21 @@
 {{-- Content --}}
 @section('content')
 
-	<div class="container">
-		<div class="content">
-			<a href="/">
-				<img src="/assets/images/menus.png" class="img-responsive">
-			</a>
-			<div class="title">
-				<a href="/">
-					Menus
-				</a>
-			</div>
-			<div class="quote">
-				This module provides a way to display menus or navigational methods in your application.
-				the display methods are based on vespakoen's menu package.
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="content">
+            <a href="/">
+                <img src="/assets/images/menus.png" class="img-responsive">
+            </a>
+            <div class="title">
+                <a href="/">
+                    Menus
+                </a>
+            </div>
+            <div class="quote">
+                This module provides a way to display menus or navigational methods in your application.
+                the display methods are based on vespakoen's menu package.
+            </div>
+        </div>
+    </div>
 
 @stop

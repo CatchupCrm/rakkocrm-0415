@@ -16,200 +16,199 @@ use Session;
 use Lang;
 
 
-class MenuLinkRepository extends BaseRepository {
+class MenuLinkRepository extends BaseRepository
+{
 
 
-	/**
-	 * The Module instance.
-	 *
-	 * @var App\Modules\ModuleManager\Http\Models\Module
-	 */
-	protected $menulink;
+    /**
+     * The Module instance.
+     *
+     * @var App\Modules\ModuleManager\Http\Models\Module
+     */
+    protected $menulink;
 
 
-	/**
-	 * Create a new ModuleRepository instance.
-	 *
-   	 * @param  App\Modules\ModuleManager\Http\Models\Module $module
-	 * @return void
-	 */
-	public function __construct(
-		Menu $menu,
-		Menulink $menulink
-		)
-	{
-		$this->menu = $menu;
-		$this->menulink = $menulink;
-	}
+    /**
+     * Create a new ModuleRepository instance.
+     *
+     * @param  App\Modules\ModuleManager\Http\Models\Module $module
+     * @return void
+     */
+    public function __construct(
+        Menu $menu,
+        Menulink $menulink
+    )
+    {
+        $this->menu = $menu;
+        $this->menulink = $menulink;
+    }
 
 
-	/**
-	 * Get role collection.
-	 *
-	 * @return Illuminate\Support\Collection
-	 */
-	public function create()
-	{
-		$lang = Session::get('locale');
+    /**
+     * Get role collection.
+     *
+     * @return Illuminate\Support\Collection
+     */
+    public function create()
+    {
+        $lang = Session::get('locale');
 
-		return compact('lang');
-	}
+        return compact('lang');
+    }
 
 
-	/**
-	 * Get user collection.
-	 *
-	 * @param  string  $slug
-	 * @return Illuminate\Support\Collection
-	 */
-	public function show($id)
-	{
+    /**
+     * Get user collection.
+     *
+     * @param  string $slug
+     * @return Illuminate\Support\Collection
+     */
+    public function show($id)
+    {
 //		$menu = $this->menulink->find($id);
 //		$links = Menulink::all();
-		$links = $this->menulink->where('menu_id', '=', $id)->get();
+        $links = $this->menulink->where('menu_id', '=', $id)->get();
 //		$links = Menulink::has('menu')->get();
-		$lang = Session::get('locale');
+        $lang = Session::get('locale');
 
-		$create_id = $id;
+        $create_id = $id;
 
-		return compact(
-			'create_id',
-			'lang',
-			'links'
-			);
-	}
-
-
-	/**
-	 * Get user collection.
-	 *
-	 * @param  int  $id
-	 * @return Illuminate\Support\Collection
-	 */
-	public function edit($id)
-	{
-		$link = $this->menulink->find($id);
-		$lang = Session::get('locale');
-
-		return compact(
-			'lang',
-			'link'
-			);
-	}
+        return compact(
+            'create_id',
+            'lang',
+            'links'
+        );
+    }
 
 
-	/**
-	 * Get all models.
-	 *
-	 * @return Illuminate\Support\Collection
-	 */
-	public function store($input)
-	{
+    /**
+     * Get user collection.
+     *
+     * @param  int $id
+     * @return Illuminate\Support\Collection
+     */
+    public function edit($id)
+    {
+        $link = $this->menulink->find($id);
+        $lang = Session::get('locale');
+
+        return compact(
+            'lang',
+            'link'
+        );
+    }
+
+
+    /**
+     * Get all models.
+     *
+     * @return Illuminate\Support\Collection
+     */
+    public function store($input)
+    {
 //dd($input);
 // 		$this->menulink = new Menulink;
 // 		$this->menulink->create($input);
 
-		$menu = Menu::find($input['menu_id']);
+        $menu = Menu::find($input['menu_id']);
 //		Cache::forget('widget_' . $menu->name);
 
-		$values = [
-			'class'			=> $input['class'],
-			'menu_id'		=> $input['menu_id'],
-			'position'		=> $input['position']
-		];
-		$menulink = Menulink::create($values);
+        $values = [
+            'class' => $input['class'],
+            'menu_id' => $input['menu_id'],
+            'position' => $input['position']
+        ];
+        $menulink = Menulink::create($values);
 
-		$locales = Cache::get('languages');
-		$original_locale = Session::get('locale');
+        //$locales = Cache::get('languages');
+        //$original_locale = Session::get('locale');
 //dd($original_locale);
 
-		foreach($locales as $locale => $properties)
-		{
+        //foreach ($locales as $locale => $properties) {
 
-			App::setLocale($properties->locale);
+            //App::setLocale($properties->locale);
 
-			if ( isset($input['status_'.$properties->id]) ) {
-				$status = $input['status_'.$properties->id];
-			} else {
-				$status = 0;
-			}
+            //if (isset($input['status_' . $properties->id])) {
+            //    $status = $input['status_' . $properties->id];
+            //} else {
+                $status = 1;
+            //}
 
-			$values = [
-				'status'	=> $status,
-				'title'		=> $input['title_'.$properties->id],
-				'url'		=> $input['url_'.$properties->id]
-			];
-			$menulink->update($values);
+            $values = [
+                'status' => $status,
+                'title' => $input['title_'],
+                'url' => $input['url_']
+            ];
+            $menulink->update($values);
 
-			if ($properties->locale === Config::get('app.fallback_locale') ) {
-				$menu_values = [
-					'status_id'		=> $status
-				];
-				$menulink->update($menu_values);
-			}
+            /*if ($properties->locale === Config::get('app.fallback_locale')) {
+                $menu_values = [
+                    'status_id' => $status
+                ];
+                $menulink->update($menu_values);
+            }*/
 
-		}
+        //}
 
-		App::setLocale($original_locale, Config::get('app.fallback_locale'));
-		return;
-	}
+        //App::setLocale($original_locale, Config::get('app.fallback_locale'));
+        return;
+    }
 
 
-	/**
-	 * Update a role.
-	 *
-	 * @param  array  $inputs
-	 * @param  int    $id
-	 * @return void
-	 */
-	public function update($input, $id)
-	{
+    /**
+     * Update a role.
+     *
+     * @param  array $inputs
+     * @param  int $id
+     * @return void
+     */
+    public function update($input, $id)
+    {
 //dd($input);
 
-		$menu = Menu::find($input['menu_id']);
+        $menu = Menu::find($input['menu_id']);
 //		Cache::forget('widget_' . $menu->name);
 
-		$menulink = Menulink::find($id);
-		$values = [
-			'class'			=> $input['class'],
-			'menu_id'		=> $input['menu_id'],
-			'position'		=> $input['position']
-		];
-		$menulink->update($values);
+        $menulink = Menulink::find($id);
+        $values = [
+            'class' => $input['class'],
+            'menu_id' => $input['menu_id'],
+            'position' => $input['position']
+        ];
+        $menulink->update($values);
 
-		$locales = Cache::get('languages');
-		$original_locale = Session::get('locale');
+        $locales = Cache::get('languages');
+        $original_locale = Session::get('locale');
 
-		foreach($locales as $locale => $properties)
-		{
+        foreach ($locales as $locale => $properties) {
 
-			App::setLocale($properties->locale);
+            App::setLocale($properties->locale);
 
-			if ( isset($input['status_'.$properties->id]) ) {
-				$status = $input['status_'.$properties->id];
-			} else {
-				$status = 0;
-			}
+            if (isset($input['status_' . $properties->id])) {
+                $status = $input['status_' . $properties->id];
+            } else {
+                $status = 0;
+            }
 
-			$values = [
-				'status'	=> $status,
-				'title'		=> $input['title_'.$properties->id],
-				'url'		=> $input['url_'.$properties->id]
-			];
-			$menulink->update($values);
+            $values = [
+                'status' => $status,
+                'title' => $input['title_' . $properties->id],
+                'url' => $input['url_' . $properties->id]
+            ];
+            $menulink->update($values);
 
-			if ($properties->locale === Config::get('app.fallback_locale') ) {
-				$menu_values = [
-					'status_id'		=> $status
-				];
-				$menulink->update($menu_values);
-			}
+            if ($properties->locale === Config::get('app.fallback_locale')) {
+                $menu_values = [
+                    'status_id' => $status
+                ];
+                $menulink->update($menu_values);
+            }
 
-		}
+        }
 
-		App::setLocale($original_locale, Config::get('app.fallback_locale'));
-		return;
-	}
+        App::setLocale($original_locale, Config::get('app.fallback_locale'));
+        return;
+    }
 
 
 // Functions --------------------------------------------------
@@ -221,27 +220,26 @@ class MenuLinkRepository extends BaseRepository {
 // 	}
 
 
-	public function changeParentById($data)
-	{
-		foreach($data as $k => $v)
-		{
-			$item = $this->find($v['id']);
-			$item->parent_id = $v['parentID'];
-			$item->position = $k + 1;
-			$item->save();
-		}
-	}
+    public function changeParentById($data)
+    {
+        foreach ($data as $k => $v) {
+            $item = $this->find($v['id']);
+            $item->parent_id = $v['parentID'];
+            $item->position = $k + 1;
+            $item->save();
+        }
+    }
 
 
-	public function generateMenu($menu, $parentId = 0) {
-		$result = null;
-		foreach ($menu as $item)
-		{
-			if ($item->parent_id == $parentId) {
+    public function generateMenu($menu, $parentId = 0)
+    {
+        $result = null;
+        foreach ($menu as $item) {
+            if ($item->parent_id == $parentId) {
 
-				$imageName = ($item->is_published) ? "publish_16x16.png" : "not_publish_16x16.png";
+                $imageName = ($item->is_published) ? "publish_16x16.png" : "not_publish_16x16.png";
 
-				$result .= '
+                $result .= '
 				<li class="dd-item" data-id="' . $item->id . '">
 				<button type="button" data-action="collapse">Collapse</button>
 				<button type="button" data-action="expand" style="display: none;">Expand</button>
@@ -262,90 +260,88 @@ class MenuLinkRepository extends BaseRepository {
 						</div>
 				</div>
 				' . $this->generateMenu($menu, $item->id) . '</li>';
-			}
-		}
+            }
+        }
 
-		return $result ? "\n<ol class=\"dd-list\">\n$result</ol>\n" : null;
-	}
-
-
-	public function getMenuHTML($items)
-	{
-		return $this->generateMenu($items);
-	}
+        return $result ? "\n<ol class=\"dd-list\">\n$result</ol>\n" : null;
+    }
 
 
-	public function parseJsonArray($jsonArray, $parentID = 0)
-	{
+    public function getMenuHTML($items)
+    {
+        return $this->generateMenu($items);
+    }
+
+
+    public function parseJsonArray($jsonArray, $parentID = 0)
+    {
 //dd($jsonArray);
 
-		$return = array();
-		foreach ($jsonArray as $subArray)
-		{
-dd($subArray);
-			$returnSubArray = array();
-			if (isset($subArray['children'])) {
-				$returnSubArray = $this->parseJsonArray($subArray['children'], $subArray['id']);
-			}
+        $return = array();
+        foreach ($jsonArray as $subArray) {
+            dd($subArray);
+            $returnSubArray = array();
+            if (isset($subArray['children'])) {
+                $returnSubArray = $this->parseJsonArray($subArray['children'], $subArray['id']);
+            }
 
-			$return[] = array('id' => $subArray['id'], 'parentID' => $parentID);
-			$return = array_merge($return, $returnSubArray);
-		}
+            $return[] = array('id' => $subArray['id'], 'parentID' => $parentID);
+            $return = array_merge($return, $returnSubArray);
+        }
 
-		return $return;
-	}
-
+        return $return;
+    }
 
 
-	// Recursive function that builds the menu from an array or object of items
-	// In a perfect world some parts of this function would be in a custom Macro or a View
-	public function buildMenu($items, $locale, $parentid = 0)
-	{
+
+    // Recursive function that builds the menu from an array or object of items
+    // In a perfect world some parts of this function would be in a custom Macro or a View
+    public function buildMenu($items, $locale, $parentid = 0)
+    {
 //dd($items);
 
-		$result = null;
+        $result = null;
 
-		foreach ($items as $item)
-		{
+        foreach ($items as $item) {
 //			if ($item->parent_id == $parentid) {
 
-		$result .= '<li>' . $item->{'title:'.$locale};
-		$result .= '<a href="' . $item->url . '">' . $item->{'title:'.$locale} . '</a>';
+            $result .= '<li>' . $item->{'title:' . $locale};
+            $result .= '<a href="' . $item->url . '">' . $item->{'title:' . $locale} . '</a>';
 //		" . $this->buildMenu($items, $item->id)
-		$result .= '</li>';
+            $result .= '</li>';
 
 //			}
-		}
+        }
 //dd($result);
 
-			return $result ?  $result : null;
-	}
+        return $result ? $result : null;
+    }
 
-	// Getter for the HTML menu builder
-	public function getHTML($items, $locale)
-	{
-		return $this->buildMenu($items, $locale);
-	}
+    // Getter for the HTML menu builder
+    public function getHTML($items, $locale)
+    {
+        return $this->buildMenu($items, $locale);
+    }
 
 
-	public function getLinks($menu_id, $locale)
-	{
-		$query = $this->menulink
+    public function getLinks($menu_id, $locale)
+    {
+        $query = $this->menulink
 //		->with('translations')
-		->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
-		->where('menulinks.menu_id', '=', $menu_id)
-		->where('menulink_translations.status', '=', 1, 'AND')
-		->where('menulink_translations.locale', '=', $locale)
-		->orderBy('menulinks.position');
+            ->join('menulink_translations', 'menulinks.id', '=', 'menulink_translations.menulink_id')
+            ->where('menulinks.menu_id', '=', $menu_id)
+            ->where('menulink_translations.status', '=', 1, 'AND')
+            ->where('menulink_translations.locale', '=', $locale)
+            ->orderBy('menulinks.position');
 //dd($query);
 //		$query->where('status', 1);
 //dd($query);
 
-		$models = $query->get();
+        $models = $query->get();
 //dd($models);
 
-		return $models;
-	}
+        return $models;
+    }
 
 
 }

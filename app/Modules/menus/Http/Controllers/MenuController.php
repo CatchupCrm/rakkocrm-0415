@@ -3,6 +3,7 @@
 namespace App\Modules\Menus\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+
 // use Illuminate\Foundation\Bus\DispatchesJobs;
 // use Illuminate\Foundation\Validation\ValidatesRequests;
 // use Illuminate\Routing\Controller as BaseController;
@@ -16,28 +17,28 @@ class MenuController extends Controller
 
 // 	use DispatchesJobs, ValidatesRequests;
 
-	/**
-	 * Initializer.
-	 *
-	 * @return \MenusController
-	 */
-	public function __construct()
-	{
+    /**
+     * Initializer.
+     *
+     * @return \MenusController
+     */
+    public function __construct()
+    {
 // middleware
-		$this->middleware('auth');
-		$this->middleware('admin');
-	}
+        /*$this->middleware('auth');
+        $this->middleware('admin');*/
+    }
 
 
-	/**
-	 * Show the application welcome screen to the user.
-	 *
-	 * @return Response
-	 */
-	public function welcome()
-	{
-		return Theme::View('modules.menus.welcome.menus');
-	}
+    /**
+     * Show the application welcome screen to the user.
+     *
+     * @return Response
+     */
+    public function welcome()
+    {
+        return Theme::View('modules.menus.welcome.menus');
+    }
 
 
 }

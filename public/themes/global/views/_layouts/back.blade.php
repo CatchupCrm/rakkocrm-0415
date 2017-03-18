@@ -11,7 +11,7 @@
 
 	<title>
 		@section('title')
-			{{ Setting::get('title', Config::get('core.title')) }}
+			Adminlte Back
 		@show
 	</title>
 
