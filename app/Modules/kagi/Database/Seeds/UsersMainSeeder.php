@@ -41,7 +41,8 @@ class UsersMainSeeder extends Seeder
 			'avatar'				=> 'assets/images/usr.png'
 		);
 
-		$permissions = array(
+		/*
+    $permissions = array(
 			[
 				'name'				=> 'Manage Admin',
 				'slug'				=> 'manage_admin',
@@ -53,8 +54,10 @@ class UsersMainSeeder extends Seeder
 				'description'		=> 'Allow users to manage their own data.'
 			],
 		 );
+     */
 
-		$roles = array(
+		/*
+    $roles = array(
 			[
 				'name'				=> 'Admin',
 				'slug'				=> 'admin',
@@ -66,11 +69,14 @@ class UsersMainSeeder extends Seeder
 				'description'		=> 'Standard User'
 			],
 		 );
+     */
 
 // Delete users
-		DB::table('users')->delete();
+		/*
+    DB::table('users')->delete();
 			$statement = "ALTER TABLE users AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
+      */
 
 // Create Permissions
 // 		DB::table('permissions')->delete();
@@ -79,31 +85,35 @@ class UsersMainSeeder extends Seeder
 // 		DB::table('permissions')->insert( $permissions );
 
 // Create Roles
-		DB::table('roles')->delete();
+		/*
+    DB::table('roles')->delete();
 			$statement = "ALTER TABLE roles AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
 
 		DB::table('roles')->insert( $roles );
+    */
 
 // Clear relationships
 // 		DB::table('permission_role')->delete();
 // 			$statement = "ALTER TABLE permission_role AUTO_INCREMENT = 1;";
 // 			DB::unprepared($statement);
 
-		DB::table('role_user')->delete();
+		/*
+    DB::table('role_user')->delete();
 			$statement = "ALTER TABLE role_user AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
+    */
 
 // Create Users
 		DB::table('users')->insert($admin);
 
 // Attach permission to role
-		$role = $this->role->find(1);
+		$role = $this->role->find(99);
 		$role->syncPermissions([1]);
 
 // Attach role to user
 		$user = User::find(1);
-		$user->roles()->attach(1);
+		$user->roles()->attach(99);
 
 	} // run
 

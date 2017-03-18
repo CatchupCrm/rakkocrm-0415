@@ -53,22 +53,26 @@ class CreateUsersTable extends Migration {
 
 //			$table->boolean('verified')->default(0)->nullable();
 //			$table->boolean('disabled')->default(0)->nullable();
-			$table->boolean('blocked')->default(0)->nullable();
-			$table->boolean('banned')->default(0)->nullable();
-			$table->boolean('confirmed')->default(0)->nullable();
-			$table->boolean('activated')->default(0)->nullable();
+			$table->boolean('isblocked')->default(0)->nullable();
+			$table->boolean('isbanned')->default(0)->nullable();
+			$table->boolean('isconfirmed')->default(0)->nullable();
+			$table->boolean('isactivated')->default(0)->nullable();
 			$table->boolean('allow_direct')->default(0)->nullable();
 
 			$table->string('confirmation_code')->nullable();
+
+			$table->string('avatar',100)->nullable();
+
+
 			$table->timestamp('activated_at')->nullable();
 //			$table->string('activation_code')->nullable()->index();
 
 			$table->timestamp('last_login')->nullable();
-			$table->string('avatar',100)->nullable();
 
-			$table->softDeletes();
+
+
 			$table->timestamps();
-
+			$table->softDeletes();
 		});
 	}
 
