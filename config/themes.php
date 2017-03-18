@@ -14,6 +14,10 @@ return [
     */
 
     'active' => env('ACTIVE_THEME', 'bootstrap'),
+
+
+
+
 //	'app' => '_layouts.app',
     'back' => '_layouts.back',
     'front' => '_layouts.front',

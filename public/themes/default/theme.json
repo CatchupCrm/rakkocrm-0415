@@ -1,0 +1,7 @@
+{
+    "slug": "default",
+    "name": "Default Theme",
+    "author": "illuminate3",
+    "description": "Uses Bootstrap",
+    "version": "1.0.0"
+}

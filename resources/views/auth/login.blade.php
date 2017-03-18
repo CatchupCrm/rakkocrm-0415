@@ -1,4 +1,4 @@
-@extends($theme_back)
+@extends(config('watchtower.views.layouts.master'))
 
 @section('content')
 <div class="container-fluid">
@@ -7,31 +7,28 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        {!! csrf_field() !!}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">E-Mail Address</label>
                             <div class="col-md-6">
+                                <div class="input-group">
+                                  <div class="input-group-addon"><i class="fa fa-1x fa-fw fa-envelope"></i></div>
                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                {!! $errors->first('email', '<div class="text-danger">:message</div>') !!}
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
+                                <div class="input-group">
+                                  <div class="input-group-addon"><i class="fa fa-1x fa-fw fa-lock"></i></div>
                                 <input type="password" class="form-control" name="password">
+                                {!! $errors->first('password', '<div class="text-danger">:message</div>') !!}
+                                </div>
                             </div>
                         </div>
 

@@ -39,6 +39,8 @@ class Kernel extends HttpKernel
 		'auth.basic'		=> \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'guest'				=> \App\Http\Middleware\RedirectIfAuthenticated::class,
 // module middleware
+   'roleshinobi' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
+   'permissionshinobi' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
 		//'tenant'			=> \App\Http\Middleware\Tenant::class,
 		'admin'				=> \App\Modules\Kagi\Http\Middleware\AuthenticateAdmin::class,
 		'filex'				=> \App\Modules\Filex\Http\Middleware\AuthenticateFilex::class,
