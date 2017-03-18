@@ -112,28 +112,28 @@ class MenuRepository extends BaseRepository
 
         $menu = Menu::create($values);
 
-        $locales = Cache::get('languages');
+        //$locales = Cache::get('languages');
 //dd($locales);
-        $original_locale = Session::get('locale');
+        //$original_locale = Session::get('locale');
 
-        foreach ($locales as $locale => $properties) {
-            App::setLocale($properties->locale);
+        //foreach ($locales as $locale => $properties) {
+            //App::setLocale($properties->locale);
 
-            if (!isset($input['status_' . $properties->id])) {
-                $status = 0;
-            } else {
-                $status = $input['status_' . $properties->id];
-            }
+            //if (!isset($input['status_' . $properties->id])) {
+                $status = 1;
+            //} else {
+            //    $status = $input['status_'];
+            //}
 
             $values = [
                 'status' => $status,
-                'title' => $input['title_' . $properties->id]
+                'title' => 'title_'
             ];
 
             $menu->update($values);
-        }
+        //}
 
-        App::setLocale($original_locale);
+        //App::setLocale($original_locale);
 //		App::setLocale('en');
         return;
 

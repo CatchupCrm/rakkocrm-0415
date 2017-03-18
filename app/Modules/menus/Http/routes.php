@@ -31,6 +31,12 @@ Route::group(['prefix' => 'admin'], function () {
 // Resources
 
     Route::resource('menus', 'MenusController');
+
+    /*Route::get('menus/newindex/', array(
+        'uses' => 'MenusController@newindex'
+    ));*/
+
+
     Route::resource('menulinks', 'MenuLinksController');
 
 // Controllers

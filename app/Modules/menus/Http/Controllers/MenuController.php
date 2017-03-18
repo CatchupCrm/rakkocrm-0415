@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 // use Illuminate\Routing\Controller as BaseController;
 
 use Theme;
+//extends Controller
 
-
-class MenuController extends Controller
+class MenuController
 {
 
 
@@ -24,10 +24,17 @@ class MenuController extends Controller
      */
     public function __construct()
     {
-// middleware
-        /*$this->middleware('auth');
-        $this->middleware('admin');*/
+        //dd("die");
     }
+
+
+    public function getAfterFilters() {return [];}
+    public function getBeforeFilters() {return [];}
+    public function getMiddleware() {return [];}
+    public function callAction($method, $parameters=false) {
+        return call_user_func_array(array($this, $method), $parameters);
+    }
+
 
 
     /**

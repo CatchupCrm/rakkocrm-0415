@@ -14,13 +14,15 @@ class Menu extends Model
 
     protected $table = 'menus';
 
+    protected $title;
+    protected $status;
 
 // Presenter ---------------------------------------------------------------
     protected $presenter = 'App\Modules\Menus\Http\Presenters\Menus';
 
 
 // Translation Model -------------------------------------------------------
-    protected $translator = 'App\Modules\Menus\Http\Models\MenuTranslation';
+    //protected $translator = 'App\Modules\Menus\Http\Models\MenuTranslation';
 
 
 // Hidden ------------------------------------------------------------------
@@ -42,10 +44,10 @@ class Menu extends Model
 
 
 // Translated Columns ------------------------------------------------------
-    protected $translatedAttributes = [
+    /*protected $translatedAttributes = [
         'status',
         'title'
-    ];
+    ];*/
 
 // 	protected $appends = [
 // 		'status',
@@ -66,10 +68,10 @@ class Menu extends Model
         return $this->status;
     }
 
-    public function getTitleAttribute()
+    /*public function getTitleAttribute()
     {
         return $this->title;
-    }
+    }*/
 
     public function scopeIsEnabled($query)
     {

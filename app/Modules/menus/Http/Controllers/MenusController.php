@@ -10,12 +10,18 @@ use App\Modules\Menus\Http\Requests\DeleteRequest;
 use App\Modules\Menus\Http\Requests\MenuCreateRequest;
 use App\Modules\Menus\Http\Requests\MenuUpdateRequest;
 
+use App\Http\Controllers\Controller;
+
+
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 
 use Cache;
 use Flash;
 use Theme;
+
+//extends MenuController
+//extends Controller
 
 
 class MenusController extends MenuController
@@ -33,6 +39,9 @@ class MenusController extends MenuController
         MenuRepository $menu_repo
     )
     {
+
+
+
         $this->menu_repo = $menu_repo;
 // middleware
         parent::__construct();
@@ -50,12 +59,24 @@ class MenusController extends MenuController
     public function index()
     {
 
+        //dd('index');
+
+        $menus = $this->menu_repo->all();
+
+        return Theme::View('menus::menus.index', compact('menus'));
+    }
+
+
+    public function newindex()
+    {
+
         dd('index');
 
         $menus = $this->menu_repo->all();
 
         return Theme::View('menus::menus.index', compact('menus'));
     }
+
 
 
     /**
