@@ -21,8 +21,8 @@ class Kernel extends HttpKernel
 		\Illuminate\View\Middleware\ShareErrorsFromSession::class,
 //		\App\Http\Middleware\VerifyCsrfToken::class,
 		\GeneaLabs\LaravelCaffeine\Http\Middleware\LaravelCaffeineDripMiddleware::class,
-		\App\Http\Middleware\SetLanguage::class,
-		\App\Http\Middleware\Tenant::class,
+		//\App\Http\Middleware\SetLanguage::class,
+		//\App\Http\Middleware\Tenant::class,
 		\App\Http\Middleware\SetTheme::class,
 		\anlutro\LaravelSettings\SaveMiddleware::class,
 	];
@@ -39,7 +39,7 @@ class Kernel extends HttpKernel
 		'auth.basic'		=> \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'guest'				=> \App\Http\Middleware\RedirectIfAuthenticated::class,
 // module middleware
-		'tenant'			=> \App\Http\Middleware\Tenant::class,
+		//'tenant'			=> \App\Http\Middleware\Tenant::class,
 		'admin'				=> \App\Modules\Kagi\Http\Middleware\AuthenticateAdmin::class,
 		'filex'				=> \App\Modules\Filex\Http\Middleware\AuthenticateFilex::class,
 		'himawari'			=> \App\Modules\Himawari\Http\Middleware\AuthenticateHimawari::class,

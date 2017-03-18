@@ -20,6 +20,7 @@
     "rakko/core": "*",
     "rakko/origami": "*",
     "rakko/kantoku": "*",
+    "rakko/menus": "*",
     "filp/whoops": "^1.0",
     "doctrine/dbal": "^2.5",
     "caffeinated/flash": "~2.0",
@@ -30,7 +31,7 @@
     "laracasts/presenter": "dev-master",
     "laravelcollective/html": "5.1.*",
     "laravelrus/localized-carbon": "dev-master",
-    "vinkla/translator": "^2.2",
+
     "wikimedia/composer-merge-plugin": "^1.2",
     "yajra/laravel-datatables-oracle": "5.12.5",
     "genealabs/laravel-caffeine": "~0.2.0",
@@ -63,8 +64,13 @@
     {
       "type": "vcs",
       "url": "https://github.com/illuminate3/kantoku"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/menus"
     }
   ],
+
   "autoload": {
     "classmap": [
       "database"
