@@ -61,7 +61,16 @@ class SetTheme
             $theme = Setting::get('active_theme', Config::get('themes.active', 'bootstrap'));
             Theme::setActive($theme);
 //			Cache::forever('theme', $theme);
+        } elseif ($theme == 'default' || $theme == 'bootstrap') {
+            $theme = Setting::get('active_theme', Config::get('themes.active', 'global'));
+            Theme::setActive($theme);
         }
+
+//$temp = Config::get('themes.back', $theme . '::' . '_layouts.back');
+
+
+//dd($theme);
+        //dd($temp);
 
 //dd(env('ACTIVE_THEME'));
 //dd($theme);

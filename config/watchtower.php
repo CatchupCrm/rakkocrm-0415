@@ -18,7 +18,7 @@ return [
     | The name of your site (or whatever) you want displayed on the header.
     |
     */
-	'site_title' => 'Watchtower',
+    'site_title' => 'Watchtower',
 
 
     /*
@@ -39,7 +39,7 @@ return [
         'model' => \Smarch\Watchtower\Models\User::class,
         'rules' => [
             'update' => [],
-            'store'  => [],
+            'store' => [],
         ],
     ],
 
@@ -55,7 +55,7 @@ return [
     | and use that one if one is found, othewise it uses the default.
     |
     */
-   'default_theme' => 'spacelab',
+    'default_theme' => 'spacelab',
 
 
     /*
@@ -75,9 +75,9 @@ return [
     |
     */
     'auth_routes' => [
-        'login'     => (str_contains( app()->version(), '5.2') ? '' : '/auth').'/login',
-        'logout'    => (str_contains( app()->version(), '5.2') ? '' : '/auth').'/logout',
-        'register'  => (str_contains( app()->version(), '5.2') ? '' : '/auth').'/register',
+        'login' => (str_contains(app()->version(), '5.2') ? '' : '/auth') . '/login',
+        'logout' => (str_contains(app()->version(), '5.2') ? '' : '/auth') . '/logout',
+        'register' => (str_contains(app()->version(), '5.2') ? '' : '/auth') . '/register',
     ],
 
 
@@ -93,45 +93,45 @@ return [
     | the permissions in watchtower will return "false" for security
     | if nothing else is supplied in a config file.
     |
-    */   
-   'acl' => [
+    */
+    'acl' => [
         'user' => [
-            'index'         => 'show.user.index',
-            'create'        => 'create.user',
-            'show'          => 'show.user',
-            'edit'          => 'edit.user',
-            'destroy'       => 'destroy.user',
-            'role'          => 'sync.user.roles',
-            'usermatrix'    => 'sync.user.roles',
-            'viewmatrix'    => 'show.user.index',
-            'search'        => 'search.user'
+            'index' => 'show.user.index',
+            'create' => 'create.user',
+            'show' => 'show.user',
+            'edit' => 'edit.user',
+            'destroy' => 'destroy.user',
+            'role' => 'sync.user.roles',
+            'usermatrix' => 'sync.user.roles',
+            'viewmatrix' => 'show.user.index',
+            'search' => 'search.user'
         ],
 
         'role' => [
-            'index'         => 'show.role.index',
-            'create'        => 'create.role',
-            'show'          => 'show.role',
-            'edit'          => 'edit.role',
-            'destroy'       => 'destroy.role',
-            'users'         => 'sync.role.users',
-            'viewmatrix'    => 'show.role.index',
-            'rolematrix'    => 'sync.role.permissions',
-            'permissions'   => 'sync.role.permissions',
-            'search'        => 'search.role'
+            'index' => 'show.role.index',
+            'create' => 'create.role',
+            'show' => 'show.role',
+            'edit' => 'edit.role',
+            'destroy' => 'destroy.role',
+            'users' => 'sync.role.users',
+            'viewmatrix' => 'show.role.index',
+            'rolematrix' => 'sync.role.permissions',
+            'permissions' => 'sync.role.permissions',
+            'search' => 'search.role'
         ],
 
         'permission' => [
-            'index'         => 'show.permission.index',
-            'create'        => 'create.permission',
-            'show'          => 'show.permission',
-            'edit'          => 'edit.permission',
-            'destroy'       => 'destroy.permission',
-            'role'          => 'sync.permission.roles',
-            'search'        => 'search.permission'
+            'index' => 'show.permission.index',
+            'create' => 'create.permission',
+            'show' => 'show.permission',
+            'edit' => 'edit.permission',
+            'destroy' => 'destroy.permission',
+            'role' => 'sync.permission.roles',
+            'search' => 'search.permission'
         ],
 
         'watchtower' => [
-            'index'         => 'show.watchtower.index'
+            'index' => 'show.watchtower.index'
         ]
     ],
 
@@ -144,43 +144,43 @@ return [
     | Watchtower comes pre-equipped with views that will work out of the box.
     | However, you are free to define you own views here instead.
     |
-    */   
-   'views' => [
+    */
+    'views' => [
         'layouts' => [
-            'master'        => 'watchtower::layouts.master',
-            'flash'         => 'watchtower::partials.flash',
-            'modal'         => 'watchtower::partials.modal',
-            'search'        => 'watchtower::partials.search',
-            'dashboard'     => 'watchtower::watchtower.index',
-            'adminlinks'    => 'watchtower::watchtower.links',
-            'unauthorized'  => 'watchtower::partials.unauthorized',
+            'master' => 'watchtower::layouts.master',
+            'flash' => 'watchtower::partials.flash',
+            'modal' => 'watchtower::partials.modal',
+            'search' => 'watchtower::partials.search',
+            'dashboard' => 'watchtower::watchtower.index',
+            'adminlinks' => 'watchtower::watchtower.links',
+            'unauthorized' => 'watchtower::partials.unauthorized',
         ],
 
         'users' => [
-            'index'     => 'watchtower::user.index',            
-            'create'    => 'watchtower::user.create',
-            'show'      => 'watchtower::user.edit',
-            'edit'      => 'watchtower::user.edit',
-            'role'      => 'watchtower::user.role',
-            'usermatrix'=> 'watchtower::user.matrix'
+            'index' => 'watchtower::user.index',
+            'create' => 'watchtower::user.create',
+            'show' => 'watchtower::user.edit',
+            'edit' => 'watchtower::user.edit',
+            'role' => 'watchtower::user.role',
+            'usermatrix' => 'watchtower::user.matrix'
         ],
 
         'roles' => [
-            'index'     => 'watchtower::role.index',            
-            'create'    => 'watchtower::partials.create',
-            'show'      => 'watchtower::partials.edit',
-            'edit'      => 'watchtower::partials.edit',
-            'user'      => 'watchtower::role.user',
-            'rolematrix'=> 'watchtower::role.matrix',
-            'permission'=> 'watchtower::role.permission'
+            'index' => 'watchtower::role.index',
+            'create' => 'watchtower::partials.create',
+            'show' => 'watchtower::partials.edit',
+            'edit' => 'watchtower::partials.edit',
+            'user' => 'watchtower::role.user',
+            'rolematrix' => 'watchtower::role.matrix',
+            'permission' => 'watchtower::role.permission'
         ],
 
         'permissions' => [
-            'index'     => 'watchtower::permission.index',            
-            'create'    => 'watchtower::partials.create',
-            'show'      => 'watchtower::partials.edit',
-            'edit'      => 'watchtower::partials.edit',
-            'role'      => 'watchtower::permission.role'
+            'index' => 'watchtower::permission.index',
+            'create' => 'watchtower::partials.create',
+            'show' => 'watchtower::partials.edit',
+            'edit' => 'watchtower::partials.edit',
+            'role' => 'watchtower::permission.role'
         ]
     ],
 
@@ -196,27 +196,27 @@ return [
     | if you wish. Make sure your route is a named route for proper
     | linkage.
     |
-    */ 
-   'dashboard' => [
+    */
+    'dashboard' => [
         'users' => [
-            'name'  => "Users",            
+            'name' => "Users",
             'route' => 'watchtower.user.index',
-            'icon'  => 'fa fa-user fa-5x',
-            'colour'=> 'primary'
+            'icon' => 'fa fa-user fa-5x',
+            'colour' => 'primary'
         ],
 
         'roles' => [
-            'name'  => "Roles",
+            'name' => "Roles",
             'route' => 'watchtower.role.index',
-            'icon'  => 'fa fa-users fa-5x',
-            'colour'=> 'info'
+            'icon' => 'fa fa-users fa-5x',
+            'colour' => 'info'
         ],
 
         'permissions' => [
-            'name'  => "Permissions",
+            'name' => "Permissions",
             'route' => 'watchtower.permission.index',
-            'icon'  => 'fa fa-5x fa-key',
-            'colour'=> 'success'
+            'icon' => 'fa fa-5x fa-key',
+            'colour' => 'success'
         ],
     ],
 
@@ -231,9 +231,9 @@ return [
     |
     */
     'pagination' => [
-        'users'         => '15',
-        'roles'         => '15',
-        'permissions'   => '15',
+        'users' => '15',
+        'roles' => '15',
+        'permissions' => '15',
     ],
 
 
@@ -268,8 +268,8 @@ return [
     |
     */
     'route' => [
-        'prefix'    => '',
-        'as'        => 'watchtower.',
-        'middleware'=> ( str_contains( app()->version(), '5.2') ? ['web'] : ['auth'] )
+        'prefix' => '',
+        'as' => 'watchtower.',
+        'middleware' => (str_contains(app()->version(), '5.2') ? ['web'] : ['auth'])
     ]
 ];

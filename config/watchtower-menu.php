@@ -10,29 +10,29 @@ return [
     | layout? That's these options right here. Add as many of them as you
     | want to have appear.
     |
-    */ 
-    'navigation' => [ 
+    */
+    'navigation' => [
         [
             'group' => 'Users',
             'class' => 'fa fa-user fa-lg',
             'links' => [
                 [
-                  'title' => 'Add User',
-                  'class' => 'fa fa-fw fa-plus',
-                  'route' => 'watchtower.user.create'
+                    'title' => 'Add User',
+                    'class' => 'fa fa-fw fa-plus',
+                    'route' => 'watchtower.user.create'
                 ],
                 [
-                  'title' => 'List Users',
-                  'class' => 'fa fa-fw fa-th-list',
-                  'route' => 'watchtower.user.index'
+                    'title' => 'List Users',
+                    'class' => 'fa fa-fw fa-th-list',
+                    'route' => 'watchtower.user.index'
                 ],
 
                 'separator',
-                
+
                 [
-                  'title' => 'User Matrix',
-                  'class' => 'fa fa-fw fa-table',
-                  'route' => 'watchtower.user.matrix'
+                    'title' => 'User Matrix',
+                    'class' => 'fa fa-fw fa-table',
+                    'route' => 'watchtower.user.matrix'
                 ]
             ]
         ],
@@ -42,22 +42,22 @@ return [
             'class' => 'fa fa-users fa-lg',
             'links' => [
                 [
-                  'title' => 'Add Role',
-                  'class' => 'fa fa-fw fa-plus',
-                  'route' => 'watchtower.role.create'
+                    'title' => 'Add Role',
+                    'class' => 'fa fa-fw fa-plus',
+                    'route' => 'watchtower.role.create'
                 ],
                 [
-                  'title' => 'List Roles',
-                  'class' => 'fa fa-fw fa-th-list',
-                  'route' => 'watchtower.role.index'
+                    'title' => 'List Roles',
+                    'class' => 'fa fa-fw fa-th-list',
+                    'route' => 'watchtower.role.index'
                 ],
 
-                  'separator',
+                'separator',
 
                 [
-                  'title' => 'Role Matrix',
-                  'class' => 'fa fa-fw fa-table',
-                  'route' => 'watchtower.role.matrix'
+                    'title' => 'Role Matrix',
+                    'class' => 'fa fa-fw fa-table',
+                    'route' => 'watchtower.role.matrix'
                 ]
             ]
         ],
@@ -67,22 +67,22 @@ return [
             'class' => 'fa fa-key fa-lg',
             'links' => [
                 [
-                  'title' => 'Add Permission',
-                  'class' => 'fa fa-fw fa-plus',
-                  'route' => 'watchtower.permission.create'
+                    'title' => 'Add Permission',
+                    'class' => 'fa fa-fw fa-plus',
+                    'route' => 'watchtower.permission.create'
                 ],
                 [
-                  'title' => 'List Permissions',
-                  'class' => 'fa fa-fw fa-th-list',
-                  'route' => 'watchtower.permission.index'
+                    'title' => 'List Permissions',
+                    'class' => 'fa fa-fw fa-th-list',
+                    'route' => 'watchtower.permission.index'
                 ],
 
-                  'separator',
-                  
+                'separator',
+
                 [
-                  'title' => 'Role Matrix',
-                  'class' => 'fa fa-fw fa-table',
-                  'route' => 'watchtower.role.matrix'
+                    'title' => 'Role Matrix',
+                    'class' => 'fa fa-fw fa-table',
+                    'route' => 'watchtower.role.matrix'
                 ]
             ]
         ],

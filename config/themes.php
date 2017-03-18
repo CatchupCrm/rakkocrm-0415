@@ -13,9 +13,7 @@ return [
     |
     */
 
-    'active' => env('ACTIVE_THEME', 'bootstrap'),
-
-
+    'active' => env('ACTIVE_THEME', 'global'),
 
 
 //	'app' => '_layouts.app',

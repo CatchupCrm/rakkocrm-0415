@@ -2,8 +2,7 @@
     <div class="container-fluid">
 
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -27,14 +26,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                         <img alt="{{ Session::get('locale')  }}"
-                             src="{{ asset('/assets/images/famfamfam_flag_icons/png/' . Session::get('locale') . '.png') }}">
+                             src="{{ asset('/assets/images/famfamfam_flag_icons/png/en.png') }}">
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
 
-                        <li>
-                            English
-                        </li>
+					<li>
+							<img src="{{ asset('/assets/images/famfamfam_flag_icons/png/en.png') }}">
+							English
+
+					</li>
+
 
                     </ul>
                 </li>
