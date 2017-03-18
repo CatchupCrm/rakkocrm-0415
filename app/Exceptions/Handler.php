@@ -33,47 +33,57 @@ class Handler extends ExceptionHandler
 	{
 		return parent::report($e);
 	}
+ 
+  
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $e
+     * @return \Illuminate\Http\Response
+     */
+    public function render($request, Exception $e)
+    {
+        if ($this->isHttpException($e))
+        {
+            return $this->renderHttpException($e);
+        }
 
-	/**
-	 * Render an exception into an HTTP response.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Exception  $e
-	 * @return \Illuminate\Http\Response
-	 */
-	public function render($request, Exception $e)
-	{
+        if (config('app.debug'))
+        {
+            return $this->renderExceptionWithWhoops($e);
+        }
 
-/*
-		if ($e instanceof TokenMismatchException) {
-			//Redirect to login form if session expires
-			Flash::success( trans('kotoba::auth.error.time_out') );
-			return redirect($request->fullUrl());
-//             return redirect($request->fullUrl())->with('errors',
-//                 ["The login form has expired, please try again. In the future, reload the login page if it has been open for several hours."]);
-		}
-*/
+        return parent::render($request, $e);
+    }
 
-		if ( ! config('app.debug') ) {
+    /**
+     * Render an exception using Whoops.
+     * 
+     * @param  \Exception $e
+     * @return \Illuminate\Http\Response
+     */
+    protected function renderExceptionWithWhoops(Exception $e)
+    {
+        $whoops = new \Whoops\Run;
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
 
-// TokenMismatchException
-			if ( $e instanceof TokenMismatchException ) {
-				$e = new HttpException( 400, $e->getMessage() );
-			}
-
-// ModelNotFoundException
-			if ( $e instanceof MethodNotAllowedHttpException ) {
-				$e = new HttpException( 404, $e->getMessage() );
-			}
-
-// MethodNotAllowedHttpException
-			if ( $e instanceof MethodNotAllowedHttpException ) {
-				$e = new HttpException( 405, $e->getMessage() );
-			}
-
-		}
-
-		return parent::render($request, $e);
-	}
-
+        return new \Illuminate\Http\Response(
+            $whoops->handleException($e),
+            $e->getStatusCode(),
+            $e->getHeaders()
+        );
+    }  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

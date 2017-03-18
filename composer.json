@@ -4,10 +4,22 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"type": "project",
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
 	"require": {
 		"php": ">=5.5.9",
 		"laravel/framework": "5.1.*",
 		"illuminate3/kotoba": "dev-master",
+		"illuminate3/core": "*",
+		"illuminate3/origami": "*",
+		"illuminate3/kantoku": "*",
+
+    "filp/whoops": "^1.0",
+    "doctrine/dbal": "^2.5",
 		"caffeinated/flash": "~2.0",
 		"caffeinated/modules": "2.1.*",
 		"caffeinated/plugins": "~2.0",
@@ -37,6 +49,20 @@
 			]
 		}
 	},
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/core"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/origami"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/kantoku"
+    }
+  ],
 	"autoload": {
 		"classmap": [
 			"database"
@@ -59,6 +85,8 @@
 			"php artisan clear-compiled"
 		],
 		"post-update-cmd": [
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:meta",
 			"php artisan optimize"
 		],
 		"post-root-package-install": [
@@ -67,10 +95,5 @@
 		"post-create-project-cmd": [
 			"php artisan key:generate"
 		]
-	},
-	"config": {
-		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev",
-	"prefer-stable": true
+	}
 }
