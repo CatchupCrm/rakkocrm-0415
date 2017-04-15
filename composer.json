@@ -11,6 +11,28 @@
     "preferred-install": "dist",
     "sort-packages": true
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/core"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/origami"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/kantoku"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/menus"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/illuminate3/kagi"
+    }
+  ],
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
@@ -70,28 +92,6 @@
       ]
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/illuminate3/core"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/illuminate3/origami"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/illuminate3/kantoku"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/illuminate3/menus"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/illuminate3/kagi"
-    }
-  ],
   "autoload": {
     "classmap": [
       "database"
@@ -101,9 +101,7 @@
     }
   },
   "autoload-dev": {
-    "classmap": [
-      "tests/TestCase.php"
-    ]
+    "classmap": []
   },
   "scripts": {
     "post-root-package-install": [
@@ -113,11 +111,8 @@
       "php artisan key:generate"
     ],
     "post-install-cmd": [
-      "php artisan clear-compiled",
-      "php artisan optimize"
     ],
     "pre-update-cmd": [
-      "php artisan clear-compiled"
     ],
     "post-update-cmd": [
       "php artisan ide-helper:generate",
